@@ -16,8 +16,8 @@ spChar = '!@#$%^&*()_+-=[]{};:./<>?'
 
 # create a function that chooses a character from a string
 # (this also works for lists)
-def character(pool):
-    return pool[random.randint(0, len(pool) - 1)]
+def character(string):
+    return string[random.randint(0, len(string) - 1)]
 
 # set up an infinite loop (don't worry, we'll break out of it later)
 while True:
@@ -36,7 +36,7 @@ while True:
             if pwLength == 0:
                 sys.exit()
             # create a condition that will break the input loop (in this case, it is when
-            # the user enters and integer and is a value of 8 or greater)
+            # the user enters an integer which is a value of 8 or greater)
             if isinstance(pwLength, int) and not pwLength < 8:
                 break
             else: # restart the loop if the value is less than 8
@@ -51,8 +51,13 @@ while True:
     # specified
     for i in range(0, pwLength):
         # make a pool of one random character from each type that refreshes each time the loop
-        # restarts. this will give each type a 25% chance of being chosen
+        # runs. this will give each type a 25% chance of being chosen
         pool = character(alphaLower) + character(alphaUpper) + character(numerals) + character(spChar)
-        password += character(pool)
+        # randomly select on of the characters from this pool and add it to the password until 
+        # the length is reached
+        password += character(pool) # a += b is shorthand for a = a + b
     
+    # print the randomly generated password
     print(password)
+    # this is the end of the main loop and will start over which will reset the password variable
+    # to an empty string
