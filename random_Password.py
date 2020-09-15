@@ -53,7 +53,7 @@ while True:
         # make a pool of one random character from each type that refreshes each time the loop
         # runs. this will give each type a 25% chance of being chosen
         pool = character(alphaLower) + character(alphaUpper) + character(numerals) + character(spChar)
-        # randomly select on of the characters from this pool and add it to the password until 
+        # randomly select one of the characters from this pool and add it to the password until 
         # the length is reached
         password += character(pool) # a += b is shorthand for a = a + b
     
