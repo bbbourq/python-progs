@@ -11,13 +11,11 @@ alphaUpper = alphaLower.upper()
 numerals = '0123456789'
 spChar = '!@#$%^&*()_+-=[]{};:./<>?'
 
-pool = alphaLower + alphaUpper + numerals + spChar
-
 # second create a function which will chose a character from a string
-def character():
+def character(pool):
     return pool[random.randint(0, len(pool) - 1)]
 
-# third, start an infinit loop
+# third, start an infinite loop
 while True:
     # fourth, prep the password variable to expect a string
     password = ''
@@ -28,11 +26,16 @@ while True:
             pwLength = int(input('How many characters long? (enter 0 to quit)'))
             if pwLength == 0:
                 sys.exit()
-            if pwLength > 0:
+            if isinstance(pwLength, int) and not pwLength < 8:
                 break
+            else:
+                print('The password must be at least 8 characters long.')
+                continue
         except ValueError:
             print('Please enter an integer.')
-    
-    password += character()
-    print(password)
-    
+        
+        for i in range(0, pwLength):
+            pool = character(alphaLower) + character(alphaUpper) + character(numerals) + character(spChar)
+            password += character(pool)
+        
+        print(password)
