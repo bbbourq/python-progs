@@ -21,13 +21,13 @@ def character(string):
 
 # set up an infinite loop (don't worry, we'll break out of it later)
 while True:
-    # set up the password variable to accept a string value which will reset each
+    # set up the password variable to accept a string value. this will reset each
     # time the loop runs
     password = ''
     
     # make an input loop
     while True:
-        # try: and except: is a way of handling exceptions (like value errors)
+        # try: and except: is how the program handles exceptions (like value errors)
         # see except ValueError: at the end of this loop to understand what it does
         try: 
             # ask the user for the length of the password and tell the user how
